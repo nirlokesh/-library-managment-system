@@ -19,14 +19,14 @@ public class BorrowList {
 	private String userName;
 	
 	@Column
-	private Integer ISBN;
+	private Integer isbn;
 	
 	@Column(name ="booking_date")
 	private LocalDate bookingDate;
 	
-	public BorrowList(String userName,Integer ISBN){
+	public BorrowList(String userName,Integer isbn){
 		this.userName = userName;
-		this.ISBN = ISBN;
+		this.isbn = isbn;
 		this.bookingDate = LocalDate.now();
 	}
 
@@ -49,11 +49,11 @@ public class BorrowList {
 	}
 
 	public Integer getISBN() {
-		return ISBN;
+		return isbn;
 	}
 
-	public void setISBN(Integer iSBN) {
-		ISBN = iSBN;
+	public void setISBN(Integer isbn) {
+		isbn = isbn;
 	}
 
 	public LocalDate getBookingDate() {

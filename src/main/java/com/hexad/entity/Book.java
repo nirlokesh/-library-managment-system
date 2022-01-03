@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Book{
 	@Id
 	@Column
-	private Integer ISBN;
+	private Integer isbn;
 	
 	@Column
 	private String name;
@@ -40,10 +40,10 @@ public class Book{
 		this.count = count;
 	}
 	public Integer getISBN() {
-		return ISBN;
+		return isbn;
 	}
-	public void setISBN(Integer iSBN) {
-		ISBN = iSBN;
+	public void setISBN(Integer isbn) {
+		this.isbn = isbn;
 	}
 	
 }
