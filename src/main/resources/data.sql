@@ -7,7 +7,7 @@ CREATE TABLE Book (
   count INT DEFAULT 1
 );
 
-INSERT INTO Book (name, description, count) VALUES
+INSERT INTO Book (ISBN,name, description, count) VALUES
   ('101','All About Java', 'Written by John T. Includes deep understanding of java with examples.', 40),
   ('102','Spring 2.0', 'Written by David H. With greate expalination about how spring works.', 30),
   ('103','HTML&CSS', 'Written by Phillip Q. Learn to create and design web pages with html and CSS.', 40),
@@ -35,5 +35,5 @@ CREATE TABLE borrower (
   password varchar(20) NOT NULL,
 );
 
-INSERT INTO Book (username, phone,password) VALUES
+INSERT INTO borrower (username, phone,password) VALUES
   ('hexad', 490909090,'hexad');
