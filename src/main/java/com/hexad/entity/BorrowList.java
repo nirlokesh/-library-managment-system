@@ -27,6 +27,7 @@ public class BorrowList {
 	public BorrowList(String userName,Integer ISBN){
 		this.userName = userName;
 		this.ISBN = ISBN;
+		this.bookingDate = LocalDate.now();
 	}
 
 	public BorrowList() {}

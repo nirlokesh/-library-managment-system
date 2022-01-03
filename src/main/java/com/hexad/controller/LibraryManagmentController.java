@@ -19,18 +19,23 @@ public class LibraryManagmentController {
 
 	@GetMapping("/library/{userName}")
 	public LibraryResponse getLibrary(@PathVariable("userName") String userName) {
-		return null;}
+		return new LibraryResponse(this.libraryService.loadLibrary(userName));
+	}
 
 	@PostMapping("/borrow/{userName}/{bookId}")
 	public LibraryResponse borrowBook(
 			@PathVariable("userName") String userName,
 			@PathVariable("bookId") Integer bookId) {
-				return null;}
+		return new LibraryResponse(this.libraryService.borrowBook(userName,
+				bookId));
+	}
 
 	@PostMapping("/submit/{userName}/{bookId}")
 	public LibraryResponse submitBook(
 			@PathVariable("userName") String userName,
 			@PathVariable("bookId") Integer bookId) {
-				return null;}
+		return new LibraryResponse(this.libraryService.submitBook(userName,
+				bookId));
+	}
 
 }
