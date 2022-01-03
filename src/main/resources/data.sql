@@ -32,7 +32,8 @@ CREATE TABLE borrower (
   card_id INT AUTO_INCREMENT PRIMARY KEY,
   username varchar(100) NOT NULL,
   phone varchar(20) NOT NULL,
+  password varchar(20) NOT NULL,
 );
 
-INSERT INTO Book (username, phone) VALUES
-  ('hexad', 490909090);
+INSERT INTO Book (username, phone,password) VALUES
+  ('hexad', 490909090,'hexad');
