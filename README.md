@@ -10,7 +10,7 @@ Technology stack used :
 
 Steps to run :
 1. Import the project from GIT, start the boot application as Java application.(localhost:8080)
-2. Run the angular application by using command "ng serve"(localhost:4200)
+2. Run the angular application(**library-managment-app**) by using command "ng serve"(localhost:4200)
 3. login with user name : "hexad", and password "hexad".
 4. Try adding book to the cart(borrow list) and click on the cart to see the borrow list.
 5. User can return the book from the cart, by clicking the button return.
