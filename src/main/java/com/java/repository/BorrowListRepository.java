@@ -1,8 +1,8 @@
-package com.hexad.repository;
+package com.java.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.hexad.entity.BorrowList;
+import com.java.entity.BorrowList;
 
 public interface BorrowListRepository extends CrudRepository<BorrowList, Integer>{
 

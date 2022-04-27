@@ -1,4 +1,4 @@
-package com.hexad.entity;
+package com.java.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

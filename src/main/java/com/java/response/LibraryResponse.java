@@ -1,7 +1,7 @@
-package com.hexad.response;
+package com.java.response;
 
-import com.hexad.entity.Library;
-import com.hexad.exception.ErrorTo;
+import com.java.entity.Library;
+import com.java.exception.ErrorTo;
 
 public class LibraryResponse {
 

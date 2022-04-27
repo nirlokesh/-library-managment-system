@@ -1,4 +1,4 @@
-package com.hexad.controller;
+package com.java.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +11,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.hexad.entity.Book;
-import com.hexad.entity.BorrowList;
-import com.hexad.entity.Library;
-import com.hexad.response.LibraryResponse;
-import com.hexad.service.LibraryServiceImpl;
+import com.java.entity.Book;
+import com.java.entity.BorrowList;
+import com.java.entity.Library;
+import com.java.response.LibraryResponse;
+import com.java.service.LibraryServiceImpl;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -29,26 +29,26 @@ public class TestLibraryManagmentController {
 
 	@Test
 	public void testGetLibraryWithEmptyLibrary()  {
-		Mockito.when(this.libraryService.loadLibrary("hexad")).thenReturn(null);
-		LibraryResponse library = this.libraryManagmentController.getLibrary("hexad");
+		Mockito.when(this.libraryService.loadLibrary("roche")).thenReturn(null);
+		LibraryResponse library = this.libraryManagmentController.getLibrary("roche");
 		Assert.assertNull("The library object will be null when there is no books available in the library.", library.getLibrary());
 	}
 	
 	@Test
 	public void testGetLibraryWithBooks()  {
-		Mockito.when(this.libraryService.loadLibrary("hexad")).thenReturn(getLibrary());
-		LibraryResponse library = this.libraryManagmentController.getLibrary("hexad");
+		Mockito.when(this.libraryService.loadLibrary("roche")).thenReturn(getLibrary());
+		LibraryResponse library = this.libraryManagmentController.getLibrary("roche");
 		Assert.assertEquals("Library is having two books", 2, library.getLibrary().getBookList().size());
 	}
 	
 	@Test
 	public void testSubmitBook(){
 		 List<BorrowList> borrowList = new ArrayList<>();
-		 borrowList.add(new BorrowList("hexad", 2));
+		 borrowList.add(new BorrowList("roche", 2));
 			Library library = new Library();
 		 library.setBorrowList(new ArrayList<BorrowList>());
 		 Mockito.when(this.libraryService.submitBook(Mockito.anyString(), Mockito.anyInt())).thenReturn(library);
-		 LibraryResponse libraryResponse = this.libraryManagmentController.submitBook("hexad", 2);
+		 LibraryResponse libraryResponse = this.libraryManagmentController.submitBook("roche", 2);
 		 Assert.assertNotEquals("Borrow list will get reduced with one entry",borrowList.size(), libraryResponse.getLibrary().getBorrowList().size());
 	}
 	

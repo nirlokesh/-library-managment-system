@@ -1,6 +1,6 @@
-package com.hexad.service;
+package com.java.service;
 
-import com.hexad.entity.Library;
+import com.java.entity.Library;
 
 public interface LibraryService {
 

@@ -1,4 +1,4 @@
-package com.hexad.exception;
+package com.java.exception;
 
 public class LibraryException extends RuntimeException{
 	private String message;

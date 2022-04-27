@@ -1,4 +1,4 @@
-package com.hexad.service;
+package com.java.service;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,23 +12,22 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import com.hexad.entity.Book;
-import com.hexad.entity.BorrowList;
-import com.hexad.entity.Library;
-import com.hexad.exception.LibraryException;
-import com.hexad.repository.BorrowListRepository;
-import com.hexad.repository.LibraryRepository;
+import com.java.entity.Book;
+import com.java.entity.BorrowList;
+import com.java.entity.Library;
+import com.java.exception.LibraryException;
+import com.java.repository.BorrowListRepository;
+import com.java.repository.LibraryRepository;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(LibraryServiceImpl.class)
 public class TestLibraryServiceWithPowerMock {
 	
-	private static final String USER_NAME = "hexad";
+	private static final String USER_NAME = "roche";
 
 	@Mock
 	private LibraryRepository libraryRepository;

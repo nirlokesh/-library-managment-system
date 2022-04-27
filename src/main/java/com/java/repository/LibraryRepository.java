@@ -1,8 +1,8 @@
-package com.hexad.repository;
+package com.java.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.hexad.entity.Book;
+import com.java.entity.Book;
 public interface LibraryRepository extends CrudRepository<Book, Integer>  
 {  
 }

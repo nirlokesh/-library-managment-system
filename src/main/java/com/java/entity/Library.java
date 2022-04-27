@@ -1,4 +1,4 @@
-package com.hexad.entity;
+package com.java.entity;
 
 import java.util.List;
 

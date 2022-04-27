@@ -1,4 +1,4 @@
-package com.hexad.exception;
+package com.java.exception;
 
 import org.springframework.http.HttpStatus;
 
