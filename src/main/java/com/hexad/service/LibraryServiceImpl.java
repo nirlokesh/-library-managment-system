@@ -94,7 +94,7 @@ public class LibraryServiceImpl implements LibraryService{
 		return userBorrowList;
 	}
 
-	private void checkBorrowEligibility(Integer bookId,
+	private boolean checkBorrowEligibility(Integer bookId,
 			List<BorrowList> userBorrowList) {
 		if (!userBorrowList.isEmpty()) {
 			if (userBorrowList.size() > 1) {
@@ -107,6 +107,7 @@ public class LibraryServiceImpl implements LibraryService{
 						"Cannont borrow this book, one user can only borrow 1 copy of any book.");
 			}
 		}
+		return true;
 	}
 
 }
