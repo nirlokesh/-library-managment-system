@@ -53,7 +53,7 @@ public class BorrowList {
 	}
 
 	public void setISBN(Integer isbn) {
-		isbn = isbn;
+		this.isbn = isbn;
 	}
 
 	public LocalDate getBookingDate() {
