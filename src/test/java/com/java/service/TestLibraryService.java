@@ -61,7 +61,7 @@ public class TestLibraryService {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "roche", "2ndName" })
+	@ValueSource(strings = { "roche", "2ndUserName" })
 	public void testGetAllBooksWithBooks(String userName) {
 		Mockito.when(this.libraryRepository.findAll()).thenReturn(Arrays.asList(new Book()));
 		Library loadLibrary = this.libraryService.loadLibrary(userName);
