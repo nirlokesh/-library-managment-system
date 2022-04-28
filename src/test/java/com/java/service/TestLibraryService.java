@@ -35,16 +35,16 @@ public class TestLibraryService {
 	private LibraryServiceImpl libraryService;
 	
 	@Test(expected=LibraryException.class)
-	public void testGetAllBooksWithNoBooks() {
+	public void testLoadLibraryWithNoBooks() {
 		Mockito.when(this.libraryRepository.findAll()).thenReturn(Collections.emptyList());
 		this.libraryService.loadLibrary(USER_NAME);
 	}
 	
 	@Test
-	public void testGetAllBooksWithBooks() {
+	public void testLoadLibraryWithBooks() {
 		Mockito.when(this.libraryRepository.findAll()).thenReturn(Arrays.asList(new Book()));
 		Library loadLibrary = this.libraryService.loadLibrary(USER_NAME);
-		Assert.assertFalse("Library will contain book list", loadLibrary.getBookList().isEmpty());
+		Assert.assertTrue("Library will contain book list", !loadLibrary.getBookList().isEmpty());
 		
 	}
 	
