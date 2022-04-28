@@ -54,7 +54,7 @@ public class TestLibraryService {
 
 	@Test
 	@DisplayName("Test Method just to display test case description instead of method name.")
-	public void testGetAllBooksWithNoBooks() {
+	public void testLoadLibraryWithNoBooks() {
 		Mockito.when(this.libraryRepository.findAll()).thenReturn(Collections.emptyList());
 		assertThrows(LibraryException.class, () -> this.libraryService.loadLibrary(USER_NAME));
 
@@ -62,7 +62,7 @@ public class TestLibraryService {
 
 	@ParameterizedTest
 	@ValueSource(strings = { "roche", "2ndUserName" })
-	public void testGetAllBooksWithBooks(String userName) {
+	public void testLoadLibraryWithBooks(String userName) {
 		Mockito.when(this.libraryRepository.findAll()).thenReturn(Arrays.asList(new Book()));
 		Library loadLibrary = this.libraryService.loadLibrary(userName);
 		Assert.assertFalse("Library will contain book list", loadLibrary.getBookList().isEmpty());
