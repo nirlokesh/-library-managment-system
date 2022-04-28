@@ -20,6 +20,7 @@ import com.java.entity.Book;
 import com.java.entity.BorrowList;
 import com.java.entity.Library;
 import com.java.exception.LibraryException;
+import com.java.exception.NoBooksException;
 import com.java.repository.BorrowListRepository;
 import com.java.repository.LibraryRepository;
 
@@ -38,14 +39,14 @@ public class TestLibraryServiceWithPowerMock {
 	@InjectMocks
 	private LibraryServiceImpl libraryService;
 	
-	@Test(expected=LibraryException.class)
-	public void testGetAllBooksWithNoBooks() {
+	@Test(expected=NoBooksException.class)
+	public void testGetAllBooksWithNoBooks() throws NoBooksException {
 		Mockito.when(this.libraryRepository.findAll()).thenReturn(Collections.emptyList());
 		this.libraryService.loadLibrary(USER_NAME);
 	}
 	
 	@Test
-	public void testGetAllBooksWithBooks() {
+	public void testGetAllBooksWithBooks() throws NoBooksException {
 		Mockito.when(this.libraryRepository.findAll()).thenReturn(Arrays.asList(new Book()));
 		Library loadLibrary = this.libraryService.loadLibrary(USER_NAME);
 		Assert.assertFalse("Library will contain book list", loadLibrary.getBookList().isEmpty());
@@ -53,7 +54,7 @@ public class TestLibraryServiceWithPowerMock {
 	}
 	
 	@Test(expected=LibraryException.class)
-	public void testBorrowBookNoBookAvailable() {
+	public void testBorrowBookNoBookAvailable() throws NoBooksException {
 		Book book = new Book();
 		book.setCount(0);
 		Optional<Book> bookOp = Optional.of(book);
@@ -62,7 +63,7 @@ public class TestLibraryServiceWithPowerMock {
 	}
 	
 	@Test(expected=LibraryException.class)
-	public void testBorrowBookAlredyBorrowed() {
+	public void testBorrowBookAlredyBorrowed() throws NoBooksException {
 		Book book = new Book();
 		book.setCount(3);
 		Optional<Book> bookOp = Optional.of(book);
@@ -72,7 +73,7 @@ public class TestLibraryServiceWithPowerMock {
 	}
 	
 	@Test(expected=LibraryException.class)
-	public void testBorrowBookOutOfLimitBorrow() {
+	public void testBorrowBookOutOfLimitBorrow() throws NoBooksException {
 		Book book = new Book();
 		book.setCount(3);
 		Optional<Book> bookOp = Optional.of(book);
@@ -82,7 +83,7 @@ public class TestLibraryServiceWithPowerMock {
 	}
 	
 	@Test
-	public void testBorrowBook() {
+	public void testBorrowBook() throws NoBooksException {
 		Book book = new Book();
 		book.setCount(3);
 		Optional<Book> bookOp = Optional.of(book);
@@ -95,7 +96,7 @@ public class TestLibraryServiceWithPowerMock {
 	}
 	
 	@Test
-	public void testSubmitBook(){
+	public void testSubmitBook() throws NoBooksException{
 		Book book = new Book();
 		book.setCount(3);
 		Optional<Book> bookOp = Optional.of(book);

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.java.exception.NoBooksException;
 import com.java.response.LibraryResponse;
 import com.java.service.LibraryServiceImpl;
 
@@ -18,14 +19,14 @@ public class LibraryManagmentController {
 	private LibraryServiceImpl libraryService;
 
 	@GetMapping("/library/{userName}")
-	public LibraryResponse getLibrary(@PathVariable("userName") String userName) {
+	public LibraryResponse getLibrary(@PathVariable("userName") String userName) throws NoBooksException {
 		return new LibraryResponse(this.libraryService.loadLibrary(userName));
 	}
 
 	@PostMapping("/borrow/{userName}/{bookId}")
 	public LibraryResponse borrowBook(
 			@PathVariable("userName") String userName,
-			@PathVariable("bookId") Integer bookId) {
+			@PathVariable("bookId") Integer bookId) throws NoBooksException {
 		return new LibraryResponse(this.libraryService.borrowBook(userName,
 				bookId));
 	}
@@ -33,7 +34,7 @@ public class LibraryManagmentController {
 	@PostMapping("/submit/{userName}/{bookId}")
 	public LibraryResponse submitBook(
 			@PathVariable("userName") String userName,
-			@PathVariable("bookId") Integer bookId) {
+			@PathVariable("bookId") Integer bookId) throws NoBooksException {
 		return new LibraryResponse(this.libraryService.submitBook(userName,
 				bookId));
 	}

@@ -11,6 +11,7 @@ import com.java.entity.Book;
 import com.java.entity.BorrowList;
 import com.java.entity.Library;
 import com.java.exception.LibraryException;
+import com.java.exception.NoBooksException;
 import com.java.repository.BorrowListRepository;
 import com.java.repository.LibraryRepository;
 
@@ -30,12 +31,12 @@ public class LibraryServiceImpl implements LibraryService{
 	 * @see com.hexad.service.LibraryService#loadLibrary(java.lang.String)
 	 */
 	@Override
-	public Library loadLibrary(String userName) {
+	public Library loadLibrary(String userName) throws NoBooksException {
 		List<Book> availableBooks = new ArrayList<>();
 		this.libraryRepository.findAll().forEach(
 				book -> availableBooks.add(book));
 		if (availableBooks.isEmpty()) {
-			throw new LibraryException("No books available in the library.");
+			throw new NoBooksException("No books available in the library.");
 		}
 		Library library = new Library();
 		library.setBorrowList(this.getBorrowList(userName));
@@ -48,7 +49,7 @@ public class LibraryServiceImpl implements LibraryService{
 	 * @see com.hexad.service.LibraryService#borrowBook(java.lang.String, java.lang.Integer)
 	 */
 	@Override
-	public Library borrowBook(String userName, Integer bookId) {
+	public Library borrowBook(String userName, Integer bookId) throws NoBooksException {
 		if (this.libraryRepository.findById(bookId).get().getCount() == 0) {
 			throw new LibraryException(
 					"Cannont borrow this book, not in stock.");
@@ -66,7 +67,7 @@ public class LibraryServiceImpl implements LibraryService{
 	 * @see com.hexad.service.LibraryService#submitBook(java.lang.String, java.lang.Integer)
 	 */
 	@Override
-	public Library submitBook(String userName, Integer bookId) {
+	public Library submitBook(String userName, Integer bookId) throws NoBooksException {
 		BorrowList borrowitem = null;
 		List<BorrowList> userBorrowList = getBorrowList(userName);
 		if(!userBorrowList.isEmpty()){
@@ -76,7 +77,7 @@ public class LibraryServiceImpl implements LibraryService{
 		return updateLibrary(userName, bookId,Action.SUBMIT);
 	}
 
-	private Library updateLibrary(String userName, Integer bookId,Action action) {
+	private Library updateLibrary(String userName, Integer bookId,Action action) throws NoBooksException {
 		Book book = this.libraryRepository.findById(bookId).get();
 		Integer count = Integer.sum(book.getCount(), action.getValue());
 		if(book.getCount()>=0) book.setCount(count);

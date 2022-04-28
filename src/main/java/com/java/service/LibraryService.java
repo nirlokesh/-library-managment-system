@@ -1,6 +1,7 @@
 package com.java.service;
 
 import com.java.entity.Library;
+import com.java.exception.NoBooksException;
 
 public interface LibraryService {
 
@@ -9,8 +10,9 @@ public interface LibraryService {
 	 *
 	 * @param userName the user name
 	 * @return the library
+	 * @throws NoBooksException 
 	 */
-	Library loadLibrary(String userName);
+	Library loadLibrary(String userName) throws NoBooksException;
 	
 	/**
 	 * Borrow book.
@@ -18,8 +20,9 @@ public interface LibraryService {
 	 * @param userName the user name
 	 * @param bookId the book id
 	 * @return the library
+	 * @throws NoBooksException 
 	 */
-	Library borrowBook(String userName, Integer bookId);
+	Library borrowBook(String userName, Integer bookId) throws NoBooksException;
 	
 	/**
 	 * Submit book.
@@ -27,7 +30,8 @@ public interface LibraryService {
 	 * @param userName the user name
 	 * @param bookId the book id
 	 * @return the library
+	 * @throws NoBooksException 
 	 */
-	Library submitBook(String userName, Integer bookId);
+	Library submitBook(String userName, Integer bookId) throws NoBooksException;
 	
 }

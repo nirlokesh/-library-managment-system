@@ -14,6 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.java.entity.Book;
 import com.java.entity.BorrowList;
 import com.java.entity.Library;
+import com.java.exception.NoBooksException;
 import com.java.response.LibraryResponse;
 import com.java.service.LibraryServiceImpl;
 
@@ -28,21 +29,21 @@ public class TestLibraryManagmentController {
 	private LibraryServiceImpl libraryService;
 
 	@Test
-	public void testGetLibraryWithEmptyLibrary()  {
+	public void testGetLibraryWithEmptyLibrary() throws NoBooksException  {
 		Mockito.when(this.libraryService.loadLibrary("roche")).thenReturn(null);
 		LibraryResponse library = this.libraryManagmentController.getLibrary("roche");
 		Assert.assertNull("The library object will be null when there is no books available in the library.", library.getLibrary());
 	}
 	
 	@Test
-	public void testGetLibraryWithBooks()  {
+	public void testGetLibraryWithBooks() throws NoBooksException  {
 		Mockito.when(this.libraryService.loadLibrary("roche")).thenReturn(getLibrary());
 		LibraryResponse library = this.libraryManagmentController.getLibrary("roche");
 		Assert.assertEquals("Library is having two books", 2, library.getLibrary().getBookList().size());
 	}
 	
 	@Test
-	public void testSubmitBook(){
+	public void testSubmitBook() throws NoBooksException{
 		 List<BorrowList> borrowList = new ArrayList<>();
 		 borrowList.add(new BorrowList("roche", 2));
 			Library library = new Library();
